@@ -7,7 +7,6 @@ typedef struct {
         unsigned long long int timestamp;
 } meting;
 
-double randomDouble();
 void printInfo(meting *x);
 
 int main(void) {
@@ -22,10 +21,10 @@ int main(void) {
   meting *m2p;
   m2p = &m2;
 
-  m1p->meetwaarde = randomDouble();
+  m1p->meetwaarde = (double)rand()/(double)(RAND_MAX/5);
   m1p->timestamp = time(NULL);
 
-  m2p->meetwaarde = randomDouble();
+  m2p->meetwaarde = (double)rand()/(double)(RAND_MAX/5);
   m2p->timestamp = time(NULL);
 
   printf("Meting m1:\n");
@@ -34,11 +33,6 @@ int main(void) {
   printInfo(m2p);
 
   return 0;
-}
-
-double randomDouble() {
-  double x = (double)rand()/(double)(RAND_MAX/5);
-  return x;
 }
 
 void printInfo(meting *x) {
