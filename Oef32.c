@@ -28,8 +28,9 @@ int main(void) {
   m2p->meetwaarde = randomDouble();
   m2p->timestamp = time(NULL);
 
+  printf("Meting m1:\n");
   printInfo(m1p);
-  printf("\n");
+  printf("\nMeting m2:\n");
   printInfo(m2p);
 
   return 0;
