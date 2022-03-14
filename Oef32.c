@@ -29,6 +29,7 @@ int main(void) {
   m2p->timestamp = time(NULL);
 
   printInfo(m1p);
+  printf("\n");
   printInfo(m2p);
 
   return 0;
@@ -40,6 +41,6 @@ double randomDouble() {
 }
 
 void printInfo(meting *x) {
-  printf("%f\n", x->meetwaarde);
-  printf("%d\n", x->timestamp);
+  printf("De gemete waarde: %f\n", x->meetwaarde);
+  printf("Het tijdstip waarop gemeten is: %I64d\n", x->timestamp);
 }
