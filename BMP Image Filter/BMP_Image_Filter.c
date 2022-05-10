@@ -61,14 +61,14 @@ int main(int argc, char const *argv[]) {
   int padding = (4 - (width * sizeof(RGBTRIPLE)) % 4) % 4;
 //SET PADDING
 
-//WRITE PIXEL ARRAY PER SCANLINE
+//WRITE PIXEL ARRAY PER ROW (SCANLINE)
   for (int i = 0; i < height; i++) {
     fread(image[i], sizeof(RGBTRIPLE), width, inFile);
 
     //SKIP PADDING
     fseek(inFile, padding, SEEK_CUR);
   }
-//WRITE PIXEL ARRAY PER SCANLINE
+//WRITE PIXEL ARRAY PER ROW (SCANLINE)
 
   free(image);
   fclose(inFile);
