@@ -32,14 +32,46 @@ int main(int argc, char const *argv[]) {
   }
 //OPEN INPUT-, OUTPUTFILE
 
-//READ INPUTFILE BMP FILE HEADER
+//READ INPUTFILE BMP FILE HEADER & WRITE TO STRUCT BMPFILE
   BITMAPFILEHEADER bmpfile;
   fread(&bmpfile, sizeof(BITMAPFILEHEADER), 1, inFile);
-//READ INPUTFILE BMP FILE HEADER
+//READ INPUTFILE BMP FILE HEADER & WRITE TO STRUCT BMPFILE
 
-//READ INPUTFILE BMP INFO HEADER
+//READ INPUTFILE BMP INFO HEADER & WRITE TO STRUCT BMPINFO
   BITMAPINFOHEADER bmpinfo;
   fread(&bmpinfo, sizeof(BITMAPINFOHEADER), 1, inFile);
-//READ INPUTFILE BMP INFO HEADER
+//READ INPUTFILE BMP INFO HEADER & WRITE TO STRUCT BMPINFO
+
+//EXTRACT IMAGE- HEIGHT, WIDTH FROM STRUCT BMPINFO
+  int height = abs(bmpinfo.biHeight);
+  int width = abs(bmpinfo.biWidth);
+//EXTRACT IMAGE- HEIGHT, WIDTH FROM STRUCT BMPINFO
+
+//ALLOCATE MEMORY FOR IMAGE
+  RGBTRIPLE(*image)[width] = calloc(height, width * sizeof(RGBTRIPLE));
+  if (image == NULL) {
+    printf("[-] Failed to allocate memory!\n");
+    fclose(inFile);
+    fclose(outFile);
+    exit(3);
+  }
+//ALLOCATE MEMORY FOR IMAGE
+
+//SET PADDING
+  int padding = (4 - (width * sizeof(RGBTRIPLE)) % 4) % 4;
+//SET PADDING
+
+//WRITE PIXEL ARRAY PER ROW (SCANLINE)
+  for (int i = 0; i < height; i++) {
+    fread(image[i], sizeof(RGBTRIPLE), width, inFile);
+
+    //SKIP PADDING
+    fseek(inFile, padding, SEEK_CUR);
+  }
+//WRITE PIXEL ARRAY PER ROW (SCANLINE)
+
+  free(image);
+  fclose(inFile);
+  fclose(outFile);
   return 0;
 }
