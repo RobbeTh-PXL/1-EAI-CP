@@ -34,3 +34,4 @@ The code written in **BMP_Image_Filter.c** is based on the **Harvard University 
 - [Harvard University CS50 Filter Exercise](https://cs50.harvard.edu/x/2021/psets/4/filter/less/)
 - [bmp.h Library](https://gist.github.com/BrainUser/80a4e12f8ae535499243)
 - [Linux man pages online](https://man7.org/linux/man-pages/index.html)
+- [Tutorialspoint C Standard Library Reference](https://www.tutorialspoint.com/c_standard_library/index.htm)
