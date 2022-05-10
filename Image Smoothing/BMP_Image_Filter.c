@@ -3,7 +3,7 @@
 #include "bmp.h"
 
 int main(int argc, char const *argv[]) {
-  printf("__//The Image Processor\\\\__\n");
+  printf("__//The BMP Image Filter Processor\\\\__\n");
 
 //ASK USER FOR INPUT-, OUTPUTFILE, FILTER
   char inputfile[50];
