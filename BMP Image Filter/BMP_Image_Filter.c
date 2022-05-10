@@ -41,5 +41,10 @@ int main(int argc, char const *argv[]) {
   BITMAPINFOHEADER bmpinfo;
   fread(&bmpinfo, sizeof(BITMAPINFOHEADER), 1, inFile);
 //READ INPUTFILE BMP INFO HEADER
+
+//EXTRACT IMAGE- HEIGHT, WIDTH
+  int height = abs(bi.biHeight);
+  int width = bi.biWidth;
+//EXTRACT IMAGE- HEIGHT, WIDTH
   return 0;
 }
