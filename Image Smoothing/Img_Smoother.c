@@ -6,8 +6,8 @@ int main(int argc, char const *argv[]) {
   printf("__//The Image Processor\\\\__\n");
 
 //ASK USER FOR INPUT-, OUTPUTFILE, FILTER
-  char *inputfile = NULL;
-  char *outputfile = NULL;
+  char inputfile[50];
+  char outputfile[50];
 
   printf("Path to input file [24 bit BMP]:\n");
   scanf("%s", inputfile);
