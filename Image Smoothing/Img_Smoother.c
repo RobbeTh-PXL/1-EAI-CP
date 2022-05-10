@@ -31,5 +31,15 @@ int main(int argc, char const *argv[]) {
     exit(2);
   }
 //OPEN INPUT-, OUTPUTFILE
+
+//READ INPUTFILE BMP FILE HEADER
+  BITMAPFILEHEADER bmpfile;
+  fread(&bmpfile, sizeof(BITMAPFILEHEADER), 1, inFile);
+//READ INPUTFILE BMP FILE HEADER
+
+//READ INPUTFILE BMP INFO HEADER
+  BITMAPINFOHEADER bmpinfo;
+  fread(&bmpinfo, sizeof(BITMAPINFOHEADER), 1, inFile);
+//READ INPUTFILE BMP INFO HEADER
   return 0;
 }
