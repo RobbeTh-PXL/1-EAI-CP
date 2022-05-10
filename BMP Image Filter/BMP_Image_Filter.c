@@ -43,8 +43,18 @@ int main(int argc, char const *argv[]) {
 //READ INPUTFILE BMP INFO HEADER
 
 //EXTRACT IMAGE- HEIGHT, WIDTH
-  int height = abs(bi.biHeight);
-  int width = bi.biWidth;
+  int height = abs(bmpinfo.biHeight);
+  int width = abs(bmpinfo.biWidth);
 //EXTRACT IMAGE- HEIGHT, WIDTH
+
+//ALLOCATE MEMORY FOR IMAGE
+  RGBTRIPLE(*image)[width] = calloc(height, width * sizeof(RGBTRIPLE));
+  if (image == NULL) {
+    printf("[-] Failed to allocate memory!\n");
+    fclose(inFile);
+    fclose(outFile);
+    exit(3);
+  }
+//ALLOCATE MEMORY FOR IMAGE
   return 0;
 }
