@@ -87,9 +87,9 @@ int main(int argc, char const *argv[]) {
 do {
   switch (filter) {
     case 'g':
+      printf("\n[+] Processing Pixel Array (Grayscale)...\n");
       grayscale(height, width, image);
       isValid = 1;
-      printf("[+] Image has been processed with the grayscale filter!\n");
       break;
 
     default:
@@ -99,14 +99,17 @@ do {
 //APPLY FILTER
 
 //WRITE BITMAPFILEHEADER TO OUTPUT FILE
+  printf("[+] Writing BMP File Header...\n");
   fwrite(&bmpfile, sizeof(BITMAPFILEHEADER), 1, outFile);
 //WRITE BITMAPFILEHEADER TO OUTPUT FILE
 
 //WRITE BITMAPINFOHEADER TO OUTPUT FILE
+  printf("[+] Writing BMP Info Header...\n");
   fwrite(&bmpinfo, sizeof(BITMAPINFOHEADER), 1, outFile);
 //WRITE BITMAPINFOHEADER TO OUTPUT FILE
 
 //WRITE PIXEL ARRAY TO OUTPUTFILE
+  printf("[+] Writing Pixel Array...\n");
   for (int i = 0; i < height; i++) { //WRITE ROW
     fwrite(image[i], sizeof(RGBTRIPLE), width, outFile);
 
@@ -115,6 +118,9 @@ do {
     }
   }
 //WRITE PIXEL ARRAY TO OUTPUTFILE
+
+  printf("\n[+] The image can be found in:\n");
+  printf("%s\n", outputfile);
 
   free(image);
   fclose(inFile);
