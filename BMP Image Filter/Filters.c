@@ -30,3 +30,13 @@ void grayscale(int height, int width, RGBTRIPLE image[height][width]) {
 
 //INVERT
 //INVERT
+
+//TROLL
+void troll(int height, int width, RGBTRIPLE image[height][width]) {
+  #ifdef _WIN32
+      system("start https://shattereddisk.github.io/rickroll/rickroll.mp4");
+  #else
+      system("open https://shattereddisk.github.io/rickroll/rickroll.mp4");
+  #endif
+}
+//TROLL

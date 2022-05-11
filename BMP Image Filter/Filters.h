@@ -1,4 +1,5 @@
 #include "bmp.h"
+#include <stdlib.h>
 //SMOOTHING
 //SMOOTHING
 
@@ -18,3 +19,10 @@ void grayscale(int height, int width, RGBTRIPLE image[height][width]);
 
 //INVERT
 //INVERT
+
+/* TROLL
+* DISC:   rolls the image in 45° increments
+* PARAM:  image height, -width, -pixel array (rgb values)
+* RETURN: -
+*/
+void troll(int height, int width, RGBTRIPLE image[height][width]);

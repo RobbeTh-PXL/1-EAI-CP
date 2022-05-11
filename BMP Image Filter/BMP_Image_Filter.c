@@ -102,6 +102,12 @@ do {
       isValid = 1;
       break;
 
+    case 't':
+      printf("\n[+] Processing Pixel Array (Troll)...\n");
+      troll(height, width, image);
+      isValid = 1;
+      break;
+
     default:
       printf("[-] Unknown Filter!\n");
   }
@@ -130,7 +136,7 @@ do {
 //WRITE PIXEL ARRAY TO OUTPUTFILE
 
   printf("\n[+] The image can be found in:\n");
-  printf("%s\n", outputfile);
+  printf(" > %s\n", outputfile);
 
   free(image);
   fclose(inFile);
