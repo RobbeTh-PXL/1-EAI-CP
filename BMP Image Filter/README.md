@@ -6,9 +6,10 @@
 - [ ] Smoothing
 - [ ] Blur
 - [ ] Edges
-- [ ] Grayscale
+- [x] Grayscale
 - [ ] Reflect
 - [ ] Invert
+- [x] Troll
 
 ### File Handling
 - [x] Specify input file at start
