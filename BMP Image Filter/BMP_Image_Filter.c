@@ -9,11 +9,13 @@ int main(int argc, char const *argv[]) {
   char inputfile[50];
   char outputfile[50];
 
-  printf("Path to input file [24 bit BMP]:\n");
+  printf("\nPath to input file [24 bit BMP]:\n");
+  printf("[?] > ");
   scanf("%s", inputfile);
   fflush(stdin);
 
-  printf("Path to output file:\n");
+  printf("\nPath to output file:\n");
+  printf("[?] > ");
   scanf("%s", outputfile);
   fflush(stdin);
 //ASK USER FOR INPUT-, OUTPUTFILE, FILTER
