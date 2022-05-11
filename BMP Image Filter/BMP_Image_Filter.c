@@ -80,6 +80,7 @@ int main(int argc, char const *argv[]) {
   printf("g - Grayscale\n");
   printf("[?] > ");
   scanf("%c", &filter);
+  fflush(stdin);
 //ASK USER FOR FILTER
 
 //APPLY FILTER
@@ -94,8 +95,26 @@ do {
     default:
       printf("[-] Unknown Filter!\n");
   }
-} while(isValid != 1);
+} while(isValid == 0);
 //APPLY FILTER
+
+//WRITE BITMAPFILEHEADER TO OUTPUT FILE
+  fwrite(&bmpfile, sizeof(BITMAPFILEHEADER), 1, outFile);
+//WRITE BITMAPFILEHEADER TO OUTPUT FILE
+
+//WRITE BITMAPINFOHEADER TO OUTPUT FILE
+  fwrite(&bmpinfo, sizeof(BITMAPINFOHEADER), 1, outFile);
+//WRITE BITMAPINFOHEADER TO OUTPUT FILE
+
+//WRITE PIXEL ARRAY TO OUTPUTFILE
+  for (int i = 0; i < height; i++) { //WRITE ROW
+    fwrite(image[i], sizeof(RGBTRIPLE), width, outFile);
+
+    for (int j = 0; j < padding; j++) { //WRITE PADDING (END OF ROW)
+      fputc(0x00, outFile);
+    }
+  }
+//WRITE PIXEL ARRAY TO OUTPUTFILE
 
   free(image);
   fclose(inFile);
