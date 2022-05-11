@@ -21,12 +21,17 @@
 - [x] Easy to use
 
 ## How to compile
+1. Create an object file from Filters.c
 ```bash
-gcc -Wall -pedantic BMP_Image_Filter.c -o BMP_Image_Filter.exe
+gcc -Wall -pedantic -c Filters.c -o Filters.o
+```
+2. Compile BMP_Image_Filter.c
+```bash
+gcc -Wall -pedantic BMP_Image_Filter.c Filters.o -o BMP_Image_Filter.exe
 ```
 
 ## Notes
-The code written in **BMP_Image_Filter.c** is based on the **Harvard University CS50 Filter Exercise** *(See References)*.
+The code written in **BMP_Image_Filter.c** is partly based on the **Harvard University CS50 Filter Exercise** *(See References)*.
 
 ## References
 - [Microsoft Docs: About Bitmaps](https://docs.microsoft.com/en-us/windows/win32/gdi/about-bitmaps)
@@ -34,5 +39,6 @@ The code written in **BMP_Image_Filter.c** is based on the **Harvard University 
 - [Harvard University CS50 Filter Exercise](https://cs50.harvard.edu/x/2021/psets/4/filter/less/)
 - [Image processing in C by Dwayne Phillips](https://homepages.inf.ed.ac.uk/rbf/BOOKS/PHILLIPS/)
 - [bmp.h Library](https://gist.github.com/BrainUser/80a4e12f8ae535499243)
+- [Calculating Scanline Padding for Bitmaps](https://forum.powerbasic.com/forum/user-to-user-discussions/programming/43679-calculating-scanline-padding-for-bitmaps)
 - [Linux man pages online](https://man7.org/linux/man-pages/index.html)
 - [Tutorialspoint C Standard Library Reference](https://www.tutorialspoint.com/c_standard_library/index.htm)
