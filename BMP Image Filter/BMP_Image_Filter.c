@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "bmp.h"
+#include "Filters.h"
 
 int main(int argc, char const *argv[]) {
   printf("__//The BMP Image Filter Processor\\\\__\n");
@@ -69,6 +69,31 @@ int main(int argc, char const *argv[]) {
     fseek(inFile, padding, SEEK_CUR);
   }
 //WRITE PIXEL ARRAY PER ROW (SCANLINE)
+
+//ASK USER FOR FILTER
+  char filter = '\0';
+  int isValid = 0;
+
+  printf("Please select one of the following filters:\n");
+  printf("g - Grayscale\n");
+  printf("[?] > ");
+  scanf("%c", &filter);
+//ASK USER FOR FILTER
+
+//APPLY FILTER
+do {
+  switch (filter) {
+    case 'g':
+      grayscale(height, width, image);
+      isValid = 1;
+      printf("[+] Image has been processed with the grayscale filter!\n");
+      break;
+
+    default:
+      printf("[-] Unknown Filter!\n");
+  }
+} while(isValid != 1);
+//APPLY FILTER
 
   free(image);
   fclose(inFile);
