@@ -17,7 +17,7 @@ int main(int argc, char const *argv[]) {
   clearscreen();
   printf("__//The BMP Image Filter Processor\\\\__\n");
 
-//ASK USER FOR INPUT-, OUTPUTFILE, FILTER
+//ASK USER FOR INPUT-, OUTPUTFILE & OPEN THEM
   char inputfile[50];
   char outputfile[50];
 
@@ -26,25 +26,23 @@ int main(int argc, char const *argv[]) {
   scanf("%s", inputfile);
   fflush(stdin);
 
-  printf("\nPath to output file:\n");
-  printf("[?] > ");
-  scanf("%s", outputfile);
-  fflush(stdin);
-//ASK USER FOR INPUT-, OUTPUTFILE, FILTER
-
-//OPEN INPUT-, OUTPUTFILE
   FILE *inFile = fopen(inputfile, "r");
   if (inFile == NULL) {
     printf("[-] Could not open input file!\n");
     exit(1);
   }
 
+  printf("\nPath to output file:\n");
+  printf("[?] > ");
+  scanf("%s", outputfile);
+  fflush(stdin);
+
   FILE *outFile = fopen(outputfile, "w");
   if (outFile == NULL) {
     printf("[-] Could not create output file!\n");
     exit(2);
   }
-//OPEN INPUT-, OUTPUTFILE
+//ASK USER FOR INPUT-, OUTPUTFILE & OPEN THEM
 
 //READ INPUTFILE BMP FILE HEADER & WRITE TO STRUCT BMPFILE
   BITMAPFILEHEADER bmpfile;
