@@ -2,7 +2,19 @@
 #include <stdlib.h>
 #include "Filters.h"
 
+void clearscreen(void) {
+  #ifdef _WIN32
+      system("cls");
+  #elif defined(unix) || defined(__unix__) || defined(__unix) || (defined(__APPLE__) && defined(__MACH__))
+      system("clear");
+  #else
+      printf("[-] OS not supported!");
+      exit(4);
+  #endif
+}
+
 int main(int argc, char const *argv[]) {
+  clearscreen();
   printf("__//The BMP Image Filter Processor\\\\__\n");
 
 //ASK USER FOR INPUT-, OUTPUTFILE, FILTER
@@ -76,7 +88,7 @@ int main(int argc, char const *argv[]) {
   char filter = '\0';
   int isValid = 0;
 
-  printf("Please select one of the following filters:\n");
+  printf("\nPlease select one of the following filters:\n");
   printf("g - Grayscale\n");
   printf("[?] > ");
   scanf("%c", &filter);
