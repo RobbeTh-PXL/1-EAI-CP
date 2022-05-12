@@ -87,7 +87,8 @@ int main(int argc, char const *argv[]) {
   int isValid = 0;
 
   printf("\nPlease select one of the following filters:\n");
-  printf("g - Grayscale\n");
+  printf("g - Grayscale \t Converts the image to black and white\n");
+  printf("t - Troll     \t Rolls the image in 45° increments\n");
   printf("[?] > ");
   scanf("%c", &filter);
   fflush(stdin);
@@ -110,6 +111,9 @@ do {
 
     default:
       printf("[-] Unknown Filter!\n");
+      printf("[?] > ");
+      scanf("%c", &filter);
+      fflush(stdin);
   }
 } while(isValid == 0);
 //APPLY FILTER
