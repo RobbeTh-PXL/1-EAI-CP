@@ -88,6 +88,7 @@ int main(void) {
 
   printf("\nPlease select one of the following filters:\n");
   printf("g - Grayscale \t Converts the image to black and white\n");
+  printf("s - Smooting  \t Removes noise, sharpness and clutter\n");
   printf("t - Troll     \t Rolls the image in 45 DEG increments\n");
   printf("[?] > ");
   scanf("%c", &filter);
@@ -100,6 +101,12 @@ do {
     case 'g':
       printf("\n[+] Processing Pixel Array (Grayscale)...\n");
       grayscale(height, width, image);
+      isValid = 1;
+      break;
+
+    case 's':
+      printf("\n[+] Processing Pixel Array (Smoothing)...\n");
+      smoothing(height, width, image);
       isValid = 1;
       break;
 

@@ -1,6 +1,10 @@
 #include "bmp.h"
-//SMOOTHING
-//SMOOTHING
+/*SMOOTHING
+* DISC:   Pixel smoothing 3x3 box filter
+* PARAM:  image height, -width, -pixel array (rgb values)
+* RETURN: -
+*/
+void smoothing(int height, int width, RGBTRIPLE image[height][width]);
 
 //EDGE
 //EDGE
