@@ -13,20 +13,20 @@ void clearscreen(void) {
   #endif
 }
 
-int main(int argc, char const *argv[]) {
+int main(void) {
   clearscreen();
   printf("__//The BMP Image Filter Processor\\\\__\n");
 
 //ASK USER FOR INPUT-, OUTPUTFILE & OPEN THEM
-  char inputfile[50];
-  char outputfile[50];
+  char inputfile[100];
+  char outputfile[100];
 
   printf("\nPath to input file [24 bit BMP]:\n");
   printf("[?] > ");
-  scanf("%s", inputfile);
+  scanf("%99s[^\n]", inputfile);
   fflush(stdin);
 
-  FILE *inFile = fopen(inputfile, "r");
+  FILE *inFile = fopen(inputfile, "rb");
   if (inFile == NULL) {
     printf("[-] Could not open input file!\n");
     exit(1);
@@ -34,10 +34,10 @@ int main(int argc, char const *argv[]) {
 
   printf("\nPath to output file:\n");
   printf("[?] > ");
-  scanf("%s", outputfile);
+  scanf("%99s[^\n]", outputfile);
   fflush(stdin);
 
-  FILE *outFile = fopen(outputfile, "w");
+  FILE *outFile = fopen(outputfile, "wb");
   if (outFile == NULL) {
     printf("[-] Could not create output file!\n");
     exit(2);
@@ -87,7 +87,10 @@ int main(int argc, char const *argv[]) {
   int isValid = 0;
 
   printf("\nPlease select one of the following filters:\n");
-  printf("g - Grayscale\n");
+  printf("g - Grayscale \t Converts the image to black and white\n");
+  printf("s - Smooting  \t Removes noise, sharpness and clutter\n");
+  printf("i - Invert    \t Inverts the colors\n");
+  printf("t - Troll     \t Rolls the image in 45 DEG increments\n");
   printf("[?] > ");
   scanf("%c", &filter);
   fflush(stdin);
@@ -102,6 +105,18 @@ do {
       isValid = 1;
       break;
 
+    case 's':
+      printf("\n[+] Processing Pixel Array (Smoothing)...\n");
+      smoothing(height, width, image);
+      isValid = 1;
+      break;
+
+    case 'i':
+      printf("\n[+] Processing Pixel Array (Invert)...\n");
+      invert(height, width, image);
+      isValid = 1;
+      break;
+
     case 't':
       printf("\n[+] Processing Pixel Array (Troll)...\n");
       troll(height, width, image);
@@ -110,6 +125,9 @@ do {
 
     default:
       printf("[-] Unknown Filter!\n");
+      printf("[?] > ");
+      scanf("%c", &filter);
+      fflush(stdin);
   }
 } while(isValid == 0);
 //APPLY FILTER
