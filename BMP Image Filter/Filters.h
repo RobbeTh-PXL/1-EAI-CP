@@ -18,6 +18,12 @@ void smoothing(int height, int width, RGBTRIPLE image[height][width]);
 */
 void grayscale(int height, int width, RGBTRIPLE image[height][width]);
 
+/* INVERT
+* DISC:   Inverts the image RGB colors
+* PARAM:  image height, -width, -pixel array (rgb values)
+* RETURN: -
+*/
+void invert(int height, int width, RGBTRIPLE image[height][width]);
 
 //REFLECT
 //REFLECT

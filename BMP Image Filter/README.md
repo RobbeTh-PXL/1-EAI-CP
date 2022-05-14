@@ -3,7 +3,7 @@
 
 ## Features
 ### Filters
-- [ ] Smoothing
+- [x] Smoothing
 - [ ] Blur
 - [ ] Edges
 - [x] Grayscale
@@ -39,11 +39,16 @@ gcc -Wall -pedantic BMP_Image_Filter.c Filters.o -o BMP_Image_Filter.exe
 
 ### Smoothing
 1. Duplicate image into a RGBTRIPLE array (preserves original pixels for calculations)
-2. Select a pixel
+2. Select a pixel as centre
 3. Check for surrounding pixels (horizontal & vertical)
 4. Add up RGB values of surrounding pixels
 5. Calculate average RGB value of surrounding pixels (sum of RGB values divided by amount of surrounding pixels)
-6. Set pixel RGB value to average 
+6. Set pixel RGB value to average
+
+### Invert
+1. Get RGB value of a pixel
+2. Subtract RGB value from 255 (255 - RGB)
+3. Set pixel RGB value to subtraction result
 
 ## Notes
 The code written in **BMP_Image_Filter.c** is partly based on the **Harvard University CS50 Filter Exercise** *(See References)*.
