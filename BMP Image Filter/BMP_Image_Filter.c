@@ -88,7 +88,7 @@ int main(void) {
 
   printf("\nPlease select one of the following filters:\n");
   printf("g - Grayscale \t Converts the image to black and white\n");
-  printf("t - Troll     \t Rolls the image in 45° increments\n");
+  printf("t - Troll     \t Rolls the image in 45 DEG increments\n");
   printf("[?] > ");
   scanf("%c", &filter);
   fflush(stdin);
@@ -112,7 +112,7 @@ do {
     default:
       printf("[-] Unknown Filter!\n");
       printf("[?] > ");
-      scanf("%2c[^\n]", &filter);
+      scanf("%c", &filter);
       fflush(stdin);
   }
 } while(isValid == 0);
