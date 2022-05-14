@@ -1,3 +1,5 @@
+#ifndef FILTERS_H
+#define FILTERS_H
 #include "bmp.h"
 /*SMOOTHING
 * DISC:   Pixel smoothing 3x3 box filter
@@ -29,3 +31,4 @@ void grayscale(int height, int width, RGBTRIPLE image[height][width]);
 * RETURN: -
 */
 void troll(int height, int width, RGBTRIPLE image[height][width]);
+#endif /* FILTERS_H */
