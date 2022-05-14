@@ -3,12 +3,11 @@
 
 ## Features
 ### Filters
-- [x] Smoothing
-- [ ] Blur
+- [x] Smoothing / Blur
 - [ ] Edges
 - [x] Grayscale
 - [ ] Reflect
-- [ ] Invert
+- [x] Invert
 - [x] Troll
 
 ### File Handling
@@ -37,7 +36,7 @@ gcc -Wall -pedantic BMP_Image_Filter.c Filters.o -o BMP_Image_Filter.exe
 2. Calculate average of the RGB colors
 3. Set pixel RGB value to average
 
-### Smoothing
+### Smoothing / Blur
 1. Duplicate image into a RGBTRIPLE array (preserves original pixels for calculations)
 2. Select a pixel as centre
 3. Check for surrounding pixels (horizontal & vertical)
