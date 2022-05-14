@@ -13,7 +13,7 @@ void clearscreen(void) {
   #endif
 }
 
-int main(int argc, char const *argv[]) {
+int main(void) {
   clearscreen();
   printf("__//The BMP Image Filter Processor\\\\__\n");
 
@@ -26,7 +26,7 @@ int main(int argc, char const *argv[]) {
   scanf("%s", inputfile);
   fflush(stdin);
 
-  FILE *inFile = fopen(inputfile, "r");
+  FILE *inFile = fopen(inputfile, "rb");
   if (inFile == NULL) {
     printf("[-] Could not open input file!\n");
     exit(1);
@@ -37,7 +37,7 @@ int main(int argc, char const *argv[]) {
   scanf("%s", outputfile);
   fflush(stdin);
 
-  FILE *outFile = fopen(outputfile, "w");
+  FILE *outFile = fopen(outputfile, "wb");
   if (outFile == NULL) {
     printf("[-] Could not create output file!\n");
     exit(2);
