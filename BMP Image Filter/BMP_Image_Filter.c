@@ -18,12 +18,12 @@ int main(void) {
   printf("__//The BMP Image Filter Processor\\\\__\n");
 
 //ASK USER FOR INPUT-, OUTPUTFILE & OPEN THEM
-  char inputfile[50];
-  char outputfile[50];
+  char inputfile[100];
+  char outputfile[100];
 
   printf("\nPath to input file [24 bit BMP]:\n");
   printf("[?] > ");
-  scanf("%s", inputfile);
+  scanf("%99s[^\n]", inputfile);
   fflush(stdin);
 
   FILE *inFile = fopen(inputfile, "rb");
@@ -34,7 +34,7 @@ int main(void) {
 
   printf("\nPath to output file:\n");
   printf("[?] > ");
-  scanf("%s", outputfile);
+  scanf("%99s[^\n]", outputfile);
   fflush(stdin);
 
   FILE *outFile = fopen(outputfile, "wb");
@@ -112,7 +112,7 @@ do {
     default:
       printf("[-] Unknown Filter!\n");
       printf("[?] > ");
-      scanf("%c", &filter);
+      scanf("%2c[^\n]", &filter);
       fflush(stdin);
   }
 } while(isValid == 0);
