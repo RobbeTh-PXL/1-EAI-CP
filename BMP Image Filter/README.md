@@ -8,6 +8,8 @@
 - [x] Grayscale
 - [ ] Reflect
 - [x] Invert
+- [ ] Brightness
+- [ ] Contrast
 - [x] Troll
 
 ### File Handling
@@ -57,6 +59,7 @@ The code written in **BMP_Image_Filter.c** is partly based on the **Harvard Univ
 - [Harvard University CS50 Course](https://pll.harvard.edu/course/cs50-introduction-computer-science?delta=0)
 - [Harvard University CS50 Filter Exercise](https://cs50.harvard.edu/x/2021/psets/4/filter/less/)
 - [Image processing in C by Dwayne Phillips](https://homepages.inf.ed.ac.uk/rbf/BOOKS/PHILLIPS/)
+- [Tutorialspoint Digital Image Processing] (https://www.tutorialspoint.com/dip/index.htm)
 - [bmp.h Library](https://gist.github.com/BrainUser/80a4e12f8ae535499243)
 - [Calculating Scanline Padding for Bitmaps](https://forum.powerbasic.com/forum/user-to-user-discussions/programming/43679-calculating-scanline-padding-for-bitmaps)
 - [Linux man pages online](https://man7.org/linux/man-pages/index.html)
