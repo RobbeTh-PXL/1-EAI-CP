@@ -52,6 +52,12 @@ gcc -Wall -pedantic BMP_Image_Filter.c Filters.o -o BMP_Image_Filter.exe
 3. Set pixel RGB value to subtraction result
 
 ## Notes
+```
+[+] : Operation success / Processing  
+[?] : Awaiting user input
+[!] : Error in user input
+[-] : System error
+```
 The code written in **BMP_Image_Filter.c** is partly based on the **Harvard University CS50 Filter Exercise** *(See References)*.
 
 ## References
