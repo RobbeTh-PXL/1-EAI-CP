@@ -31,7 +31,7 @@ int main(void) {
 
     inFile = fopen(inputfile, "rb");
     if (inFile == NULL) {
-      printf("[-] Could not open input file!\n");
+      printf("[!] Could not open input file!\n");
     }
   } while(inFile == NULL);
 
@@ -43,7 +43,7 @@ int main(void) {
 
     outFile = fopen(outputfile, "wb");
     if (outFile == NULL) {
-      printf("[-] Could not create output file!\n");
+      printf("[!] Could not create output file!\n");
     }
   } while(outFile == NULL);
 //ASK USER FOR INPUT-, OUTPUTFILE & OPEN THEM
@@ -64,7 +64,7 @@ int main(void) {
 //EXTRACT IMAGE- HEIGHT, WIDTH FROM STRUCT BMPINFO
 
 //ALLOCATE MEMORY FOR IMAGE
-  printf("\n[+] Importing image...\n");
+  printf("\n[+] Importing Image...\n");
   RGBTRIPLE(*image)[width] = calloc(height, width * sizeof(RGBTRIPLE));
   if (image == NULL) {
     printf("[-] Failed to allocate memory!\n");
@@ -129,7 +129,7 @@ do {
       break;
 
     default:
-      printf("[-] Unknown Filter!\n");
+      printf("[!] Unknown Filter!\n");
       printf("[?] > ");
       scanf("%c", &filter);
       fflush(stdin);
