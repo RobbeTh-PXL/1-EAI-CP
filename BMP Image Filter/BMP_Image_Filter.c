@@ -18,30 +18,39 @@ int main(void) {
   printf("__//The BMP Image Filter Processor\\\\__\n");
 
 //ASK USER FOR INPUT-, OUTPUTFILE & OPEN THEM
-  char inputfile[100];
-  char outputfile[100];
-
-  printf("\nPath to input file [24 bit BMP]:\n");
-  printf("[?] > ");
-  scanf("%99s[^\n]", inputfile);
-  fflush(stdin);
-
-  FILE *inFile = fopen(inputfile, "rb");
-  if (inFile == NULL) {
-    printf("[-] Could not open input file!\n");
-    exit(1);
-  }
-
-  printf("\nPath to output file:\n");
-  printf("[?] > ");
-  scanf("%99s[^\n]", outputfile);
-  fflush(stdin);
+  char inputfile[50];
+  char outputfile[50];
+  FILE* inFile;
+  FILE* outFile;
 
   FILE *outFile = fopen(outputfile, "wb");
   if (outFile == NULL) {
     printf("[-] Could not create output file!\n");
     exit(2);
   }
+  do {
+    printf("\nPath to input file [24 bit BMP]:\n");
+    printf("[?] > ");
+    scanf("%s", inputfile);
+    fflush(stdin);
+
+    inFile = fopen(inputfile, "rb");
+    if (inFile == NULL) {
+      printf("[-] Could not open input file!\n");
+    }
+  } while(inFile == NULL);
+
+  do {
+    printf("\nPath to output file:\n");
+    printf("[?] > ");
+    scanf("%s", outputfile);
+    fflush(stdin);
+
+    outFile = fopen(outputfile, "wb");
+    if (outFile == NULL) {
+      printf("[-] Could not create output file!\n");
+    }
+  } while(outFile == NULL);
 //ASK USER FOR INPUT-, OUTPUTFILE & OPEN THEM
 
 //READ INPUTFILE BMP FILE HEADER & WRITE TO STRUCT BMPFILE
@@ -60,12 +69,13 @@ int main(void) {
 //EXTRACT IMAGE- HEIGHT, WIDTH FROM STRUCT BMPINFO
 
 //ALLOCATE MEMORY FOR IMAGE
+  printf("\n[+] Importing image...\n");
   RGBTRIPLE(*image)[width] = calloc(height, width * sizeof(RGBTRIPLE));
   if (image == NULL) {
     printf("[-] Failed to allocate memory!\n");
     fclose(inFile);
     fclose(outFile);
-    exit(3);
+    exit(1);
   }
 //ALLOCATE MEMORY FOR IMAGE
 
