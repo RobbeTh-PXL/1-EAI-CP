@@ -20,14 +20,9 @@ int main(void) {
 //ASK USER FOR INPUT-, OUTPUTFILE & OPEN THEM
   char inputfile[50];
   char outputfile[50];
-  FILE* inFile;
-  FILE* outFile;
+  FILE *inFile;
+  FILE *outFile;
 
-  FILE *outFile = fopen(outputfile, "wb");
-  if (outFile == NULL) {
-    printf("[-] Could not create output file!\n");
-    exit(2);
-  }
   do {
     printf("\nPath to input file [24 bit BMP]:\n");
     printf("[?] > ");
