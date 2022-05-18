@@ -85,6 +85,30 @@ void invert(int height, int width, RGBTRIPLE image[height][width]) {
 }
 //INVERT
 
+//BRIGHTNESS
+int truncate(int val) {
+  if (val > 255) {
+    return 255;
+  }
+
+  if (val < 0) {
+    return 0;
+  }
+
+  return val;
+}
+
+void brightness(int height, int width, int offset,  RGBTRIPLE image[height][width]) {
+  for (int i = 0; i < height; i++) { //ROWS
+    for (int j = 0; j < width; j++) { //COLUMNS
+      image[i][j].rgbtBlue = truncate(image[i][j].rgbtBlue + offset);
+      image[i][j].rgbtGreen = truncate(image[i][j].rgbtGreen + offset);
+      image[i][j].rgbtRed = truncate(image[i][j].rgbtRed + offset);
+    }
+  }
+}
+//BRIGTHNESS
+
 //TROLL
 void troll(int height, int width, RGBTRIPLE image[height][width]) {
   #ifdef _WIN32

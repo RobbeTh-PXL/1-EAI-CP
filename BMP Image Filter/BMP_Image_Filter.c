@@ -89,19 +89,21 @@ int main(void) {
   }
 //WRITE PIXEL ARRAY PER ROW (SCANLINE)
 
-//ASK USER FOR FILTER
+//ASK USER FOR INPUT
   char filter = '\0';
   int isValid = 0;
+  int offset = 0;
 
   printf("\nPlease select one of the following filters:\n");
   printf("g - Grayscale \t Converts the image to black and white\n");
   printf("s - Smoothing \t Removes noise, sharpness and clutter\n");
   printf("i - Invert    \t Inverts the colors\n");
+  printf("b - Brightness\t Change the brightness\n");
   printf("t - Troll     \t Rolls the image in 45 DEG increments\n");
   printf("[?] > ");
   scanf("%c", &filter);
   fflush(stdin);
-//ASK USER FOR FILTER
+//ASK USER FOR INPUT
 
 //APPLY FILTER
 do {
@@ -121,6 +123,16 @@ do {
     case 'i':
       printf("\n[+] Processing Pixel Array (Invert)...\n");
       invert(height, width, image);
+      isValid = 1;
+      break;
+
+    case 'b':
+      printf("Brightness offset:\n");
+      printf("[?] > ");
+      scanf("%d", &offset);
+      fflush(stdin);
+      printf("\n[+] Processing Pixel Array (Invert)...\n");
+      brightness(height, width, offset, image);
       isValid = 1;
       break;
 

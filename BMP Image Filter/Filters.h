@@ -25,11 +25,15 @@ void grayscale(int height, int width, RGBTRIPLE image[height][width]);
 */
 void invert(int height, int width, RGBTRIPLE image[height][width]);
 
-//REFLECT
-//REFLECT
+/* BRIGHTNESS
+* DISC:   Converts image to grayscale
+* PARAM:  image height, -width, -pixel array (rgb values), user def offset
+* RETURN: -
+*/
+void brightness(int height, int width, int offset,  RGBTRIPLE image[height][width]);
 
-//INVERT
-//INVERT
+//REFLECT
+//REFLECT
 
 /* TROLL
 * DISC:   Rolls the image in 45° increments
