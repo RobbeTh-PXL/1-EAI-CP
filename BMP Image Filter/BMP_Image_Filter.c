@@ -26,7 +26,7 @@ int main(void) {
   do {
     printf("\nPath to input file [24 bit BMP]:\n");
     printf("[?] > ");
-    scanf("%s", inputfile);
+    scanf("%49s[^\n]", inputfile);
     fflush(stdin);
 
     inFile = fopen(inputfile, "rb");
@@ -38,7 +38,7 @@ int main(void) {
   do {
     printf("\nPath to output file:\n");
     printf("[?] > ");
-    scanf("%s", outputfile);
+    scanf("%49s[^\n]", outputfile);
     fflush(stdin);
 
     outFile = fopen(outputfile, "wb");
