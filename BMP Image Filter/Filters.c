@@ -107,7 +107,7 @@ void brightness(int height, int width, int offset,  RGBTRIPLE image[height][widt
 
 //CONTRAST
 void contrast(int height, int width, int offset,  RGBTRIPLE image[height][width]) {
-  float factor = (259.0 * (255.0 + (float) offset) / (255.0 * (259.0 - (float) offset))); //Contrast correction factor
+  float factor = (259.0 * (255.0 + (float) offset) / (255.0 * (259.0 - (float) offset))); //CONTRAST CORRECTION FACTOR
   for (int i = 0; i < height; i++) { //ROWS
     for (int j = 0; j < width; j++) { //COLUMNS
       image[i][j].rgbtBlue = truncate(round(factor * (image[i][j].rgbtBlue - 128) + 128));
