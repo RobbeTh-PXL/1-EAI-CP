@@ -20,8 +20,8 @@ int main(void) {
 //ASK USER FOR INPUT-, OUTPUTFILE & OPEN THEM
   char inputfile[50];
   char outputfile[50];
-  FILE *inFile;
-  FILE *outFile;
+  FILE *inFile = NULL;
+  FILE *outFile = NULL;
 
   do {
     printf("\nPath to input file [24 bit BMP]:\n");
