@@ -18,38 +18,44 @@ int main(void) {
   printf("__//The BMP Image Filter Processor\\\\__\n");
 
 //ASK USER FOR INPUT-, OUTPUTFILE & OPEN THEM
-  char inputfile[100];
-  char outputfile[100];
+  char inputfile[50];
+  char outputfile[50];
+  FILE *inFile = NULL;
+  FILE *outFile = NULL;
 
-  printf("\nPath to input file [24 bit BMP]:\n");
-  printf("[?] > ");
-  scanf("%99s[^\n]", inputfile);
-  fflush(stdin);
+  do {
+    printf("\nPath to input file [24 bit BMP]:\n");
+    printf("[?] > ");
+    scanf("%49s[^\n]", inputfile);
+    fflush(stdin);
 
-  FILE *inFile = fopen(inputfile, "rb");
-  if (inFile == NULL) {
-    printf("[-] Could not open input file!\n");
-    exit(1);
-  }
+    inFile = fopen(inputfile, "rb");
+    if (inFile == NULL) {
+      printf("\n[!] Could not open input file!\n");
+    }
+  } while(inFile == NULL);
 
-  printf("\nPath to output file:\n");
-  printf("[?] > ");
-  scanf("%99s[^\n]", outputfile);
-  fflush(stdin);
+  do {
+    printf("\nPath to output file:\n");
+    printf("[?] > ");
+    scanf("%49s[^\n]", outputfile);
+    fflush(stdin);
 
-  FILE *outFile = fopen(outputfile, "wb");
-  if (outFile == NULL) {
-    printf("[-] Could not create output file!\n");
-    exit(2);
-  }
+    outFile = fopen(outputfile, "wb");
+    if (outFile == NULL) {
+      printf("\n[!] Could not create output file!\n");
+    }
+  } while(outFile == NULL);
 //ASK USER FOR INPUT-, OUTPUTFILE & OPEN THEM
 
 //READ INPUTFILE BMP FILE HEADER & WRITE TO STRUCT BMPFILE
+  printf("\n[+] Reading BMP File Header...\n");
   BITMAPFILEHEADER bmpfile;
   fread(&bmpfile, sizeof(BITMAPFILEHEADER), 1, inFile);
 //READ INPUTFILE BMP FILE HEADER & WRITE TO STRUCT BMPFILE
 
 //READ INPUTFILE BMP INFO HEADER & WRITE TO STRUCT BMPINFO
+  printf("[+] Reading BMP Info Header...\n");
   BITMAPINFOHEADER bmpinfo;
   fread(&bmpinfo, sizeof(BITMAPINFOHEADER), 1, inFile);
 //READ INPUTFILE BMP INFO HEADER & WRITE TO STRUCT BMPINFO
@@ -60,12 +66,13 @@ int main(void) {
 //EXTRACT IMAGE- HEIGHT, WIDTH FROM STRUCT BMPINFO
 
 //ALLOCATE MEMORY FOR IMAGE
+  printf("[+] Allocating Pixel Values...\n");
   RGBTRIPLE(*image)[width] = calloc(height, width * sizeof(RGBTRIPLE));
   if (image == NULL) {
     printf("[-] Failed to allocate memory!\n");
     fclose(inFile);
     fclose(outFile);
-    exit(3);
+    exit(1);
   }
 //ALLOCATE MEMORY FOR IMAGE
 
@@ -82,19 +89,22 @@ int main(void) {
   }
 //WRITE PIXEL ARRAY PER ROW (SCANLINE)
 
-//ASK USER FOR FILTER
+//ASK USER FOR INPUT
   char filter = '\0';
   int isValid = 0;
+  int offset = 0;
 
   printf("\nPlease select one of the following filters:\n");
   printf("g - Grayscale \t Converts the image to black and white\n");
-  printf("s - Smooting  \t Removes noise, sharpness and clutter\n");
+  printf("s - Smoothing \t Removes noise, sharpness and clutter\n");
   printf("i - Invert    \t Inverts the colors\n");
+  printf("b - Brightness\t Change the brightness\n");
+  printf("c - Contrast  \t Change the contrast\n");
   printf("t - Troll     \t Rolls the image in 45 DEG increments\n");
   printf("[?] > ");
   scanf("%c", &filter);
   fflush(stdin);
-//ASK USER FOR FILTER
+//ASK USER FOR INPUT
 
 //APPLY FILTER
 do {
@@ -117,6 +127,26 @@ do {
       isValid = 1;
       break;
 
+    case 'b':
+      printf("\nBrightness offset:\n");
+      printf("[?] > ");
+      scanf("%d", &offset);
+      fflush(stdin);
+      printf("\n[+] Processing Pixel Array (Brightness)...\n");
+      brightness(height, width, offset, image);
+      isValid = 1;
+      break;
+
+    case 'c':
+      printf("\nContrast offset:\n");
+      printf("[?] > ");
+      scanf("%d", &offset);
+      fflush(stdin);
+      printf("\n[+] Processing Pixel Array (Contrast)...\n");
+      contrast(height, width, offset, image);
+      isValid = 1;
+      break;
+
     case 't':
       printf("\n[+] Processing Pixel Array (Troll)...\n");
       troll(height, width, image);
@@ -124,7 +154,7 @@ do {
       break;
 
     default:
-      printf("[-] Unknown Filter!\n");
+      printf("[!] Unknown Filter!\n");
       printf("[?] > ");
       scanf("%c", &filter);
       fflush(stdin);
