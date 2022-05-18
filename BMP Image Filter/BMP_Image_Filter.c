@@ -49,11 +49,13 @@ int main(void) {
 //ASK USER FOR INPUT-, OUTPUTFILE & OPEN THEM
 
 //READ INPUTFILE BMP FILE HEADER & WRITE TO STRUCT BMPFILE
+  printf("\n[+] Reading BMP File Header...\n");
   BITMAPFILEHEADER bmpfile;
   fread(&bmpfile, sizeof(BITMAPFILEHEADER), 1, inFile);
 //READ INPUTFILE BMP FILE HEADER & WRITE TO STRUCT BMPFILE
 
 //READ INPUTFILE BMP INFO HEADER & WRITE TO STRUCT BMPINFO
+  printf("[+] Reading BMP Info Header...\n");
   BITMAPINFOHEADER bmpinfo;
   fread(&bmpinfo, sizeof(BITMAPINFOHEADER), 1, inFile);
 //READ INPUTFILE BMP INFO HEADER & WRITE TO STRUCT BMPINFO
@@ -64,7 +66,7 @@ int main(void) {
 //EXTRACT IMAGE- HEIGHT, WIDTH FROM STRUCT BMPINFO
 
 //ALLOCATE MEMORY FOR IMAGE
-  printf("\n[+] Importing Image...\n");
+  printf("[+] Allocating Pixel Values...\n");
   RGBTRIPLE(*image)[width] = calloc(height, width * sizeof(RGBTRIPLE));
   if (image == NULL) {
     printf("[-] Failed to allocate memory!\n");
@@ -93,7 +95,7 @@ int main(void) {
 
   printf("\nPlease select one of the following filters:\n");
   printf("g - Grayscale \t Converts the image to black and white\n");
-  printf("s - Smooting  \t Removes noise, sharpness and clutter\n");
+  printf("s - Smoothing \t Removes noise, sharpness and clutter\n");
   printf("i - Invert    \t Inverts the colors\n");
   printf("t - Troll     \t Rolls the image in 45 DEG increments\n");
   printf("[?] > ");
