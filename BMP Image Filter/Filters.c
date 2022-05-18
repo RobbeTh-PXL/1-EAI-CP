@@ -17,7 +17,6 @@ void smoothing(int height, int width, RGBTRIPLE image[height][width]) {
   }
   //DUPLICATE IMAGE
 
-  //BOX FILTER
   for (int i = 0; i < height; i++) { //ROWS
     for (int j = 0; j < width; j++) { //COLUMNS
       float blue_sum = 0.0;
@@ -25,6 +24,7 @@ void smoothing(int height, int width, RGBTRIPLE image[height][width]) {
       float red_sum = 0.0;
       int counter = 0;
 
+      //BOX FILTER
       for (int k = -1; k < 2; k++) { //SURROUNDING PIXELS ON ROW
         for (int l = -1; l < 2; l++) { //SURROUNDING PIXELS ON COLUMN
           if (i+k < 0 || i+k >= height) { //CHECK IF PIXEL IS OUT OF BOUNDS (ROW)
@@ -41,6 +41,7 @@ void smoothing(int height, int width, RGBTRIPLE image[height][width]) {
           counter++;
         }
       }
+      //BOX FILTER
 
       //CALCULATE & WRITE AVG
       image[i][j].rgbtBlue = round(blue_sum / (float) counter);
@@ -48,7 +49,6 @@ void smoothing(int height, int width, RGBTRIPLE image[height][width]) {
       image[i][j].rgbtRed = round(red_sum / (float) counter);
     }
   }
-  //BOX FILTER
 }
 //SMOOTHING
 
