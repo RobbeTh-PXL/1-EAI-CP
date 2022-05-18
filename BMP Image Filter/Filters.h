@@ -8,9 +8,6 @@
 */
 void smoothing(int height, int width, RGBTRIPLE image[height][width]);
 
-//EDGE
-//EDGE
-
 /* GRAYSCALE
 * DISC:   Converts image to grayscale
 * PARAM:  image height, -width, -pixel array (rgb values)
@@ -26,14 +23,18 @@ void grayscale(int height, int width, RGBTRIPLE image[height][width]);
 void invert(int height, int width, RGBTRIPLE image[height][width]);
 
 /* BRIGHTNESS
-* DISC:   Converts image to grayscale
+* DISC:   Changes the image brightness
 * PARAM:  image height, -width, -pixel array (rgb values), user def offset
 * RETURN: -
 */
 void brightness(int height, int width, int offset,  RGBTRIPLE image[height][width]);
 
-//REFLECT
-//REFLECT
+/* CONTRAST
+* DISC:   Changes the image contrast
+* PARAM:  image height, -width, -pixel array (rgb values), user def offset
+* RETURN: -
+*/
+void contrast(int height, int width, int offset,  RGBTRIPLE image[height][width]);
 
 /* TROLL
 * DISC:   Rolls the image in 45° increments

@@ -6,6 +6,20 @@
 *  Pixel colors of bmp are formatted in BGR
 */
 
+//TRUNCATE
+int truncate(int val) {
+  if (val > 255) {
+    return 255;
+  }
+
+  if (val < 0) {
+    return 0;
+  }
+
+  return val;
+}
+//TRUNCATE
+
 //SMOOTHING
 void smoothing(int height, int width, RGBTRIPLE image[height][width]) {
   //DUPLICATE IMAGE
@@ -52,9 +66,6 @@ void smoothing(int height, int width, RGBTRIPLE image[height][width]) {
 }
 //SMOOTHING
 
-//EDGE
-//EDGE
-
 //GRAYSCALE
 void grayscale(int height, int width, RGBTRIPLE image[height][width]) {
   for (int i = 0; i < height; i++) { //ROWS
@@ -70,9 +81,6 @@ void grayscale(int height, int width, RGBTRIPLE image[height][width]) {
 }
 //GRAYSCALE
 
-//REFLECT
-//REFLECT
-
 //INVERT
 void invert(int height, int width, RGBTRIPLE image[height][width]) {
   for (int i = 0; i < height; i++) { //ROWS
@@ -86,18 +94,6 @@ void invert(int height, int width, RGBTRIPLE image[height][width]) {
 //INVERT
 
 //BRIGHTNESS
-int truncate(int val) {
-  if (val > 255) {
-    return 255;
-  }
-
-  if (val < 0) {
-    return 0;
-  }
-
-  return val;
-}
-
 void brightness(int height, int width, int offset,  RGBTRIPLE image[height][width]) {
   for (int i = 0; i < height; i++) { //ROWS
     for (int j = 0; j < width; j++) { //COLUMNS
@@ -108,6 +104,19 @@ void brightness(int height, int width, int offset,  RGBTRIPLE image[height][widt
   }
 }
 //BRIGTHNESS
+
+//CONTRAST
+void contrast(int height, int width, int offset,  RGBTRIPLE image[height][width]) {
+  float factor = (259.0 * (255.0 + (float) offset) / (255.0 * (259.0 - (float) offset))); //Contrast correction factor
+  for (int i = 0; i < height; i++) { //ROWS
+    for (int j = 0; j < width; j++) { //COLUMNS
+      image[i][j].rgbtBlue = truncate(round(factor * (image[i][j].rgbtBlue - 128) + 128));
+      image[i][j].rgbtGreen = truncate(round(factor * (image[i][j].rgbtGreen - 128) + 128));
+      image[i][j].rgbtRed = truncate(round(factor * (image[i][j].rgbtRed - 128) + 128));
+    }
+  }
+}
+//CONTRAST
 
 //TROLL
 void troll(int height, int width, RGBTRIPLE image[height][width]) {

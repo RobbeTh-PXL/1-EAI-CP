@@ -8,8 +8,8 @@
 - [x] Grayscale
 - [ ] Reflect
 - [x] Invert
-- [ ] Brightness
-- [ ] Contrast
+- [x] Brightness
+- [x] Contrast
 - [x] Troll
 
 ### File Handling
@@ -59,6 +59,21 @@ gcc -Wall -pedantic BMP_Image_Filter.c Filters.o -o BMP_Image_Filter.exe
 2. Subtract RGB value from 255 (255 - RGB)
 3. Set pixel RGB value to subtraction result
 
+### Brightness
+1. Get user defined offset
+2. Get RGB value of a pixel
+3. Add up offset to RGB value
+4. Truncate RGB value (0 < RGB Value > 255)
+5. Set pixel RGB value to truncated value
+
+### Contrast
+1. Get user defined offset
+2. Get RGB value of a pixel
+3. Calculate contrast correction factor with offset
+4. Calculate new RGB value with contrast correction factor
+5. Truncate RGB value (0 < RGB Value > 255)
+6. Set pixel RGB value to truncated value
+
 ## Notes
 The code written in **BMP_Image_Filter.c** is partly based on the **Harvard University CS50 Filter Exercise** *(See References)*.
 
@@ -67,6 +82,7 @@ The code written in **BMP_Image_Filter.c** is partly based on the **Harvard Univ
 - [Harvard University CS50 Course](https://pll.harvard.edu/course/cs50-introduction-computer-science?delta=0)
 - [Harvard University CS50 Filter Exercise](https://cs50.harvard.edu/x/2021/psets/4/filter/less/)
 - [Image processing in C by Dwayne Phillips](https://homepages.inf.ed.ac.uk/rbf/BOOKS/PHILLIPS/)
+- [Dreamland Fantasy Studios](https://www.dfstudios.co.uk/)
 - [Tutorialspoint Digital Image Processing](https://www.tutorialspoint.com/dip/index.htm)
 - [bmp.h Library](https://gist.github.com/BrainUser/80a4e12f8ae535499243)
 - [Calculating Scanline Padding for Bitmaps](https://forum.powerbasic.com/forum/user-to-user-discussions/programming/43679-calculating-scanline-padding-for-bitmaps)

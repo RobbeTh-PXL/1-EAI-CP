@@ -31,7 +31,7 @@ int main(void) {
 
     inFile = fopen(inputfile, "rb");
     if (inFile == NULL) {
-      printf("[!] Could not open input file!\n");
+      printf("\n[!] Could not open input file!\n");
     }
   } while(inFile == NULL);
 
@@ -43,7 +43,7 @@ int main(void) {
 
     outFile = fopen(outputfile, "wb");
     if (outFile == NULL) {
-      printf("[!] Could not create output file!\n");
+      printf("\n[!] Could not create output file!\n");
     }
   } while(outFile == NULL);
 //ASK USER FOR INPUT-, OUTPUTFILE & OPEN THEM
@@ -99,6 +99,7 @@ int main(void) {
   printf("s - Smoothing \t Removes noise, sharpness and clutter\n");
   printf("i - Invert    \t Inverts the colors\n");
   printf("b - Brightness\t Change the brightness\n");
+  printf("c - Contrast  \t Change the contrast\n");
   printf("t - Troll     \t Rolls the image in 45 DEG increments\n");
   printf("[?] > ");
   scanf("%c", &filter);
@@ -127,12 +128,22 @@ do {
       break;
 
     case 'b':
-      printf("Brightness offset:\n");
+      printf("\nBrightness offset:\n");
       printf("[?] > ");
       scanf("%d", &offset);
       fflush(stdin);
-      printf("\n[+] Processing Pixel Array (Invert)...\n");
+      printf("\n[+] Processing Pixel Array (Brightness)...\n");
       brightness(height, width, offset, image);
+      isValid = 1;
+      break;
+
+    case 'c':
+      printf("\nContrast offset:\n");
+      printf("[?] > ");
+      scanf("%d", &offset);
+      fflush(stdin);
+      printf("\n[+] Processing Pixel Array (Contrast)...\n");
+      contrast(height, width, offset, image);
       isValid = 1;
       break;
 
