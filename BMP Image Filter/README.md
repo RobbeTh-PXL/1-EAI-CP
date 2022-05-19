@@ -1,5 +1,4 @@
 # BMP Image Filter
----
 
 ## Features
 ### Filters
