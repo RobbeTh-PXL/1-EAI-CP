@@ -9,7 +9,7 @@
 - [x] Invert
 - [x] Brightness
 - [x] Contrast
-- [x] Troll
+- [x] T-roll
 
 ### File Handling
 - [x] Specify input file at start
