@@ -18,8 +18,8 @@ int main(void) {
   printf("__//The BMP Image Filter Processor\\\\__\n");
 
 //ASK USER FOR INPUT-, OUTPUTFILE & OPEN THEM
-  char inputfile[50];
-  char outputfile[50];
+  char inputfile[50] = "\0";
+  char outputfile[50] = "\0";
   FILE *inFile = NULL;
   FILE *outFile = NULL;
 
@@ -66,7 +66,7 @@ int main(void) {
 //EXTRACT IMAGE- HEIGHT, WIDTH FROM STRUCT BMPINFO
 
 //ALLOCATE MEMORY FOR IMAGE
-  printf("[+] Allocating Pixel Values...\n");
+  printf("[+] Allocating Pixel Array...\n");
   RGBTRIPLE(*image)[width] = calloc(height, width * sizeof(RGBTRIPLE));
   if (image == NULL) {
     printf("[-] Failed to allocate memory!\n");
@@ -100,7 +100,7 @@ int main(void) {
   printf("i - Invert    \t Inverts the colors\n");
   printf("b - Brightness\t Change the brightness\n");
   printf("c - Contrast  \t Change the contrast\n");
-  printf("t - Troll     \t Rolls the image in 45 DEG increments\n");
+  printf("t - T-roll     \t Rolls the image in 45 DEG increments\n");
   printf("[?] > ");
   scanf("%c", &filter);
   fflush(stdin);
@@ -148,7 +148,7 @@ do {
       break;
 
     case 't':
-      printf("\n[+] Processing Pixel Array (Troll)...\n");
+      printf("\n[+] Processing Pixel Array (T-roll)...\n");
       troll(height, width, image);
       isValid = 1;
       break;
