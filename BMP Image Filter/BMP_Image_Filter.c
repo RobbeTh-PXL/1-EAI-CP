@@ -100,7 +100,7 @@ int main(void) {
   printf("i - Invert    \t Inverts the colors\n");
   printf("b - Brightness\t Change the brightness\n");
   printf("c - Contrast  \t Change the contrast\n");
-  printf("t - T-roll     \t Rolls the image in 45 DEG increments\n");
+  printf("t - T-roll    \t Rolls the image in 45 DEG increments\n");
   printf("[?] > ");
   scanf("%c", &filter);
   fflush(stdin);
