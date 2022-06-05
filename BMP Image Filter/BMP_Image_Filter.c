@@ -2,6 +2,12 @@
 #include <stdlib.h>
 #include "Filters.h"
 
+/* NOTE ABOUT POINTERS!
+  When you pass an array to a function, it gets converted into a pointer. That happens with all arrays in C.
+  "image" Is an array of rgb colors/pixel of the input bmp image!
+  When using an array like "image" in a function e.g. smoothing(height, width, image);, "image" is only ALLOCATED ONCE.
+*/
+
 void clearscreen(void) {
   #ifdef _WIN32
       system("cls");
